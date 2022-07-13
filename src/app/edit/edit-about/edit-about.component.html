@@ -1,0 +1,137 @@
+<section class="colorlib-contact">
+  <div class="colorlib-narrow-content">
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3">
+        <span class="heading-meta">Edit your About</span>
+      </div>
+    </div>
+  </div>
+  <div  class="col-md-10 col-md-push-1" >
+    <div class="row">
+    <div class="col-md-10 col-md-offset-1 col-md-pull-1 " >
+      <form [formGroup]="form" (submit)="onSave()">
+        <div class="form-group" style="width: 25%;">
+          <mat-form-field>
+            <label >First name:</label>
+            <input
+            matInput
+            formControlName="firstName"
+            type="text"
+            class="form-control">
+            <mat-error *ngIf="form.get('firstName').invalid">Please enter a valid FirstName</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+        <label >Last name:</label>
+        <input
+        matInput
+        formControlName="lastName"
+        type="text"
+        class="form-control">
+        <mat-error *ngIf="form.get('lastName').invalid">Please enter a valid LastName</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group" style="width: 40%;">
+      <mat-form-field>
+        <label>Designation:</label>
+        <input
+        matInput
+        type="text"
+        formControlName="designation"
+        class="form-control">
+        <mat-error *ngIf="form.get('designation').invalid">Please enter a valid designation</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>Current location:</label>
+        <input
+        matInput
+        type="text"
+        formControlName="currentLocation"
+        class="form-control">
+        <mat-error *ngIf="form.get('currentLocation').invalid">Please enter a valid location</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+        matInput
+        type="text"
+        formControlName="cvLink"
+        placeholder="CV Link"
+        class="form-control">
+        <mat-error *ngIf="form.get('cvLink').invalid">Please enter a valid link</mat-error>
+      </mat-form-field>
+      <!-- <mat-form-field>
+            <label>CV Link:</label>
+            <input
+            matInput
+            type="text"
+            formControlName="cvLink"
+            class="form-control">
+            <mat-error *ngIf="form.get('cvLink').invalid">Please enter a valid link</mat-error>
+          </mat-form-field> -->
+        </div>
+        <div class="form-group col-md-6">
+          <button mat-stroked-button type="button" (click)="profilePicture.click()">Upload Profile Picture</button>
+          <input
+          type="file"
+          #profilePicture
+          (change)="onImagePicked($event,'profileImage')"
+          class="form-control"
+          >
+        </div>
+        <div class="image-preview" *ngIf="pimagePreview!=='' && pimagePreview && form.get('profileImage').valid" >
+          <img [src]="pimagePreview" [alt]="form.value.firstName" >
+        </div>
+
+        <div class="form-group col-md-6">
+          <button mat-stroked-button type="button" (click)="coverPicture.click()">Upload Cover Picture</button>
+          <input
+          type="file"
+          #coverPicture
+          (change)="onImagePicked($event,'coverImage')"
+          class="form-control">
+        </div>
+        <div class="image-preview" *ngIf="cimagePreview!=='' && cimagePreview && form.get('coverImage').valid" >
+          <img [src]="cimagePreview" [alt]="form.value.firstName" >
+        </div>
+      <div class="form-group" style="width: 100%;">
+        <label>Short Summary:</label>
+          <textarea
+          class="form-control"
+          cols="30" rows="10"
+          formControlName="about"></textarea>
+      </div>
+
+      <div class="form-group"  style="width: 25%;" formArrayName="ps">
+
+        <label class="col-md-3">Add Primary Skills(Max 5):</label>
+        <ng-container *ngFor="let ps of form.get('ps')['controls'],let i= index; ">
+          <mat-form-field >
+            <input
+            matInput
+             type="text"
+            class="form-control mt-20"
+            placeholder="Add Skills"
+            formControlName="{{i}}">
+          </mat-form-field>
+          <button class="btn btn-danger " (click)="onDelete(i)">Delete</button>
+        </ng-container>
+        <mat-error *ngIf="form.get('ps').invalid">Please enter a valid Primary Skill</mat-error>
+        <button class="btn btn-light btn-sm" style="margin: 3px;" (click)="onAddSkills()" type="button">+Add Skills</button>
+
+
+      </div>
+      <div class="form-group">
+        <button type="submit"
+        mat-raised-button
+        color="primary">Save</button>
+      </div>
+    </form>
+
+  </div>
+  </div>
+
+</div>
+</section>

@@ -1,0 +1,55 @@
+<section class="colorlib-contact">
+  <div class="colorlib-narrow-content">
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3">
+        <span class="heading-meta">Edit your Projects</span>
+      </div>
+    </div>
+  </div>
+<div class="col-md-10 col-md-push-1" >
+  <div class="row">
+  <div class="col-md-10 col-md-offset-1 col-md-pull-1 " >
+    <form [formGroup]="form" (submit)="onSave()">
+
+      <div class="form-group"  style="width: 25%;" formArrayName="project">
+
+        <label class="col-md-3">Add your Projects:</label>
+        <ng-container *ngFor="let ps of form.get('project')['controls'],let i= index;" [formGroupName]="i">
+          <div>
+            <mat-form-field >
+              <input
+              matInput
+              formControlName="title"
+              type="text"
+              class="form-control mt-20"
+              placeholder="Add Project Name">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field >
+              <textarea
+              matInput
+              formControlName="link"
+              type="text"
+              class="form-control mt-20"
+              placeholder="Add project link"></textarea>
+            </mat-form-field>
+            <button class="btn btn-danger " (click)="onDelete(i)">Delete</button>
+          </div>
+
+        </ng-container>
+        <mat-error *ngIf="form.get('project').invalid">Please enter a valid input</mat-error>
+        <button class="btn btn-light btn-sm" style="margin: 3px;"  type="button" (click)="onAdd()">+Add</button>
+      </div>
+    <div class="form-group">
+      <button type="submit"
+      mat-raised-button
+      color="primary">Save</button>
+    </div>
+    </form>
+  </div>
+  </div>
+
+</div>
+</section>

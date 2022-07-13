@@ -1,0 +1,394 @@
+<section class="colorlib-contact">
+  <div class="colorlib-narrow-content">
+    <!-- Intro -->
+    <div class="row" >
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3">
+        <span class="heading-meta">Create your Portfolio</span>
+        <h2 class="colorlib-heading">Create </h2>
+      </div>
+    </div>
+  </div>
+<div  class="col-md-10 col-md-push-1" >
+  <div class="row">
+  <div class="col-md-10 col-md-offset-1 col-md-pull-1 " >
+    <form [formGroup]="form" (submit)="addUser()">
+      <!-- About section -->
+      <div>
+      <div class="form-group" style="width: 25%;">
+        <mat-form-field>
+          <input
+          matInput
+          formControlName="firstName"
+          type="text"
+          placeholder="First name"
+          class="form-control">
+          <mat-error *ngIf="form.get('firstName').invalid">Please enter a valid FirstName</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+      <input
+      matInput
+      placeholder="Last name"
+      formControlName="lastName"
+      type="text"
+      class="form-control">
+      <mat-error *ngIf="form.get('lastName').invalid">Please enter a valid LastName</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-group" style="width: 40%;">
+    <mat-form-field>
+      <input
+      matInput
+      type="text"
+      placeholder="Designation"
+      formControlName="designation"
+      class="form-control">
+      <mat-error *ngIf="form.get('designation').invalid">Please enter a valid designation</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+      matInput
+      type="text"
+      placeholder="Current location"
+      formControlName="currentLocation"
+      class="form-control">
+      <mat-error *ngIf="form.get('currentLocation').invalid">Please enter a valid location</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+          <input
+          matInput
+          type="text"
+          formControlName="cvLink"
+          placeholder="CV Link"
+          class="form-control">
+          <mat-error *ngIf="form.get('cvLink').invalid">Please enter a valid link</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-6">
+        <button mat-stroked-button type="button" (click)="profilePicture.click()">Upload Profile Picture</button>
+        <input
+        type="file"
+        #profilePicture
+        (change)="onImagePicked($event,'profileImage')"
+        class="form-control"
+        >
+      </div>
+      <div class="image-preview" *ngIf="pimagePreview!=='' && pimagePreview && form.get('profileImage').valid" >
+        <img [src]="pimagePreview" [alt]="form.value.firstName" >
+      </div>
+
+      <div class="form-group col-md-6">
+        <button mat-stroked-button type="button" (click)="coverPicture.click()">Upload Cover Picture</button>
+        <input
+        type="file"
+        #coverPicture
+        (change)="onImagePicked($event,'coverImage')"
+        class="form-control">
+      </div>
+      <div class="image-preview" *ngIf="cimagePreview!=='' && cimagePreview && form.get('coverImage').valid" >
+        <img [src]="cimagePreview" [alt]="form.value.firstName" >
+      </div>
+
+
+      <div class="form-group">
+        <mat-form-field>
+        <textarea
+        matInput
+          class="form-control"
+          placeholder="Short Summary"
+          formControlName="about"
+          rows="6"
+          style="width: 100%;"></textarea>
+          <mat-error *ngIf="form.get('about').invalid">Please enter a valid Summary</mat-error>
+        </mat-form-field>
+        </div>
+      </div>
+      <!-- Primary Skills Section  -->
+        <div class="form-group"  style="width: 25%;" formArrayName="ps">
+
+            <label class="col-md-3">Add Primary Skills:</label>
+            <ng-container *ngFor="let ps of form.get('ps')['controls'],let i= index; ">
+              <mat-form-field >
+                <input
+                matInput
+                 type="text"
+                class="form-control mt-20"
+                placeholder="Add Skills"
+                formControlName="{{i}}">
+              </mat-form-field>
+            </ng-container>
+            <mat-error *ngIf="form.get('ps').invalid">Please enter a valid Primary Skill</mat-error>
+            <button class="btn btn-light btn-sm" style="margin: 3px;" (click)="onAddSkills()" type="button">+Add Skills</button>
+
+
+      </div>
+      <!-- Expertise Section  -->
+      <div class="form-group"  style="width: 25%;" formArrayName="expertise">
+
+        <label class="col-md-3">Add your Expertise:</label>
+        <ng-container *ngFor="let ps of form.get('expertise')['controls'],let i= index;" [formGroupName]="i">
+          <mat-form-field >
+            <input
+            matInput
+            formControlName="title"
+            type="text"
+            class="form-control mt-20"
+            placeholder="Add Expertise title">
+          </mat-form-field>
+          <mat-form-field >
+            <textarea
+            matInput
+            formControlName="desc"
+            type="text"
+            class="form-control mt-20"
+            placeholder="Add Expertise Desc"></textarea>
+          </mat-form-field>
+          <div>
+
+            <label for="color">Select color: </label>
+            <mat-radio-group id="color" formControlName="color" >
+              <mat-radio-button checked value="1" ><span class="dot" style="background-color: blue;"></span></mat-radio-button>
+              <mat-radio-button  value="2" ><span class="dot" style="background-color: red;"></span></mat-radio-button>
+              <mat-radio-button value="3" ><span class="dot" style="background-color: yellow;"></span></mat-radio-button>
+              <mat-radio-button value="4" ><span class="dot" style="background-color: purple;"></span></mat-radio-button>
+              <mat-radio-button value="5" ><span class="dot" style="background-color: cyan;"></span></mat-radio-button>
+              <mat-radio-button value="6" ><span class="dot" style="background-color: darkblue;"></span></mat-radio-button>
+            </mat-radio-group>
+          </div>
+            <div>
+
+              <label for="icon">Select icon: </label>
+              <mat-radio-group id="icon"  formControlName="icon">
+                <mat-radio-button checked value="icon-data"><span class="icon-data" ></span></mat-radio-button>
+                <mat-radio-button value="icon-bulb"><span class="icon-bulb"></span></mat-radio-button>
+                <mat-radio-button value="icon-phone3"><span class="icon-phone3"></span></mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+
+        </ng-container>
+        <mat-error *ngIf="form.get('expertise').invalid">Please enter a valid Expertise</mat-error>
+        <button class="btn btn-light btn-sm" style="margin: 3px;" (click)="onAddExpertise()" type="button">+Add Expertise</button>
+
+
+       </div>
+       <!-- Skills Section  -->
+      <div class="form-group"  style="width: 25%;" formArrayName="skills">
+
+  <label class="col-md-3">Add your Skills:</label>
+  <ng-container *ngFor="let ps of form.get('skills')['controls'],let i= index;" [formGroupName]="i">
+    <mat-form-field >
+      <input
+      matInput
+      formControlName="name"
+      type="text"
+      class="form-control mt-20"
+      placeholder="Add Skill Name">
+    </mat-form-field>
+
+    <div>
+
+      <label for="color">Rate your skill out of 100: </label>
+      <mat-slider formControlName="percent"> </mat-slider>
+      {{  form.get('skills')['controls'].at(i).value.percent}}
+      </div>
+      <div>
+
+        <label for="color">Select color: </label>
+        <mat-radio-group id="color" formControlName="color" >
+          <mat-radio-button checked value="1" ><span class="dot" style="background-color: blue;"></span></mat-radio-button>
+          <mat-radio-button  value="2" ><span class="dot" style="background-color: red;"></span></mat-radio-button>
+          <mat-radio-button value="3" ><span class="dot" style="background-color: yellow;"></span></mat-radio-button>
+          <mat-radio-button value="4" ><span class="dot" style="background-color: purple;"></span></mat-radio-button>
+          <mat-radio-button value="5" ><span class="dot" style="background-color: cyan;"></span></mat-radio-button>
+          <mat-radio-button value="6" ><span class="dot" style="background-color: darkblue;"></span></mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+
+  </ng-container>
+  <mat-error *ngIf="form.get('skills').invalid">Please enter a valid Skill</mat-error>
+  <button class="btn btn-light btn-sm" style="margin: 3px;"  type="button" (click)="onAddSkill()">+Add Skill</button>
+      </div>
+      <!-- Education Section  -->
+      <div class="form-group"  style="width: 25%;" formArrayName="education">
+
+  <label class="col-md-3">Add your Education:</label>
+  <ng-container *ngFor="let ps of form.get('education')['controls'],let i= index;" [formGroupName]="i">
+    <div>
+      <mat-form-field >
+        <input
+        matInput
+        formControlName="name"
+        type="text"
+        class="form-control mt-20"
+        placeholder="Add education Name">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field >
+        <textarea
+        matInput
+        formControlName="desc"
+        type="text"
+        class="form-control mt-20"
+        placeholder="Add education desc"></textarea>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field >
+        <input
+        matInput
+        formControlName="startDate"
+        type="date"
+        class="form-control mt-20"
+        placeholder="Enter Start Date">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field >
+        <input
+        matInput
+        formControlName="endDate"
+        type="date"
+        class="form-control mt-20"
+        placeholder="Enter End Date">
+      </mat-form-field>
+    </div>
+
+
+  </ng-container>
+  <mat-error *ngIf="form.get('education').invalid">Please enter a valid input</mat-error>
+  <button class="btn btn-light btn-sm" style="margin: 3px;"  type="button" (click)="onAddEducation()">+Add</button>
+      </div>
+      <!-- Expertience Section  -->
+      <div class="form-group"  style="width: 25%;" formArrayName="experience">
+
+        <label class="col-md-3">Add your Experience:</label>
+        <ng-container *ngFor="let ps of form.get('experience')['controls'],let i= index;" [formGroupName]="i">
+          <div>
+            <mat-form-field >
+              <input
+              matInput
+              formControlName="title"
+              type="text"
+              class="form-control mt-20"
+              placeholder="Add Company Name">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field >
+              <textarea
+              matInput
+              formControlName="desc"
+              type="text"
+              class="form-control mt-20"
+              placeholder="Add description"></textarea>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field >
+              <input
+              matInput
+              formControlName="startDate"
+              type="date"
+              class="form-control mt-20"
+              placeholder="Enter Start Date">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field >
+              <input
+              matInput
+              formControlName="endDate"
+              type="date"
+              class="form-control mt-20"
+              placeholder="Enter End Date">
+            </mat-form-field>
+          </div>
+
+
+        </ng-container>
+        <mat-error *ngIf="form.get('experience').invalid">Please enter a valid input</mat-error>
+        <button class="btn btn-light btn-sm" style="margin: 3px;"  type="button" (click)="onAddExperience()">+Add</button>
+            </div>
+      <!-- Project Section  -->
+      <div class="form-group"  style="width: 25%;" formArrayName="project">
+
+        <label class="col-md-3">Add your Project:</label>
+        <ng-container *ngFor="let ps of form.get('project')['controls'],let i= index;" [formGroupName]="i">
+          <div>
+            <mat-form-field >
+              <input
+              matInput
+              formControlName="title"
+              type="text"
+              class="form-control mt-20"
+              placeholder="Add Project Name">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field >
+              <input
+              matInput
+              formControlName="link"
+              type="text"
+              class="form-control mt-20"
+              placeholder="Enter link of the Project">
+            </mat-form-field>
+          </div>
+
+
+        </ng-container>
+        <mat-error *ngIf="form.get('project').invalid">Please enter a valid input</mat-error>
+        <button class="btn btn-light btn-sm" style="margin: 3px;"  type="button" (click)="onAddProject()">+Add</button>
+            </div>
+      <!-- Contact Section  -->
+      <div>
+        <div class="form-group" style="width: 25%;">
+          <mat-form-field>
+            <input
+            matInput
+            formControlName="email"
+            type="email"
+            placeholder="Email"
+            class="form-control">
+            <mat-error *ngIf="form.get('email').invalid">Please enter a valid Email</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+        <textarea
+        matInput
+        placeholder="Address"
+        formControlName="address"
+        type="text"
+        class="form-control"></textarea>
+        <mat-error *ngIf="form.get('address').invalid">Please enter a valid Address</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group" style="width: 40%;">
+      <mat-form-field>
+        <input
+        matInput
+        type="number"
+        placeholder="Mobile Number"
+        formControlName="phone"
+        class="form-control">
+        <mat-error *ngIf="form.get('phone').invalid">Please enter a valid Number</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+        <div class="form-group">
+        <button type="submit"
+        mat-raised-button
+        color="primary">Save</button>
+      </div>
+    </form>
+  </div>
+  </div>
+
+</div>
+</section>

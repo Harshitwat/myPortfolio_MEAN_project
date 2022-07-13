@@ -1,0 +1,35 @@
+<section class="colorlib-experience" data-section="experience">
+  <div class="colorlib-narrow-content">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+        <span class="heading-meta">Experience</span>
+        <h2 class="colorlib-heading animate-box">Work Experience</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+           <div class="timeline-centered">
+             <article class="timeline-entry"  *ngFor="let e of experience,let i=index">
+                <div class="timeline-entry-inner">
+
+                   <div class="timeline-icon color-{{(i+1)%6}}">
+                      <i class="icon-pen2"></i>
+                   </div>
+
+                   <div class="timeline-label">
+                      <h2><a href="#">{{e.title}}</a> <span>{{e.startDate}}-{{e.endDate}}</span></h2>
+                      <p>{{e.desc}}</p>
+                   </div>
+                </div>
+             </article>
+             <article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
+                <div class="timeline-entry-inner">
+                   <div class="timeline-icon color-none">
+                   </div>
+                </div>
+             </article>
+          </div>
+       </div>
+     </div>
+  </div>
+</section>

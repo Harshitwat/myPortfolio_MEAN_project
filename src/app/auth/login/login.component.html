@@ -1,0 +1,48 @@
+<section class="colorlib-contact" data-section="login">
+  <div class="colorlib-narrow-content">
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3">
+        <span class="heading-meta">Login to edit Portfolio</span>
+        <h2 class="colorlib-heading">Login</h2>
+      </div>
+    </div>
+
+    <mat-card>
+      <form  (submit)="onLogin(loginForm)" #loginForm="ngForm" >
+        <mat-form-field>
+          <input
+          matInput
+          name="email"
+          ngModel
+          required
+          email
+           type="email"
+           placeholder="Email"
+           #emailInput="ngModel"
+            >
+            <mat-error *ngIf="emailInput.invalid">Please enter a valid email</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+          matInput
+          name="password"
+          ngModel
+          required
+          type="password"
+          #passwordInput="ngModel"
+          placeholder="Password">
+            <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+        </mat-form-field>
+          <button
+           mat-raised-button
+            color="primary"
+             type="submit"
+             >Login</button>
+
+
+      </form>
+    </mat-card>
+
+    </div>
+  </section>

@@ -1,0 +1,29 @@
+input[type="file"]{
+  visibility: hidden;
+  width:max-content
+}
+
+mat-form-field,
+textarea{
+  width: 100%;
+
+}
+.image-preview{
+  height: 5rem;
+  margin: 1rem 0;
+}
+.image-preview img{
+  height: 100%;
+}
+
+.ps{
+  width:10%;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.dot {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+}

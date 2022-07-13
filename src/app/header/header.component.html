@@ -1,0 +1,30 @@
+
+
+  <mat-toolbar class="position-fixed">
+<span><a href="">MyPortfolio</a></span>
+  <span class="mat-spacer"></span>
+
+  <span style="margin-right: 15%;">
+    <ul>
+      <li >
+        <a  mat-button routerLink="/allPortfolios" routerLinkActive="mat-primary">All Portfolios</a>
+      </li>
+      <li >
+        <a  mat-button *ngIf="userIsAuthenticated" routerLink="/myPortfolios" routerLinkActive="mat-primary">My Portfolios</a>
+      </li>
+      <li >
+        <a *ngIf="userIsAuthenticated" mat-button routerLink="/create" routerLinkActive="mat-primary">Create new Portfolio</a>
+      </li>
+      <li >
+        <a *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/login"routerLinkActive="mat-primary">Login</a>
+      </li>
+
+      <li >
+        <a *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/signup" routerLinkActive="mat-primary">Sign-up</a>
+      </li>
+      <li >
+        <button *ngIf="userIsAuthenticated" mat-button (click)="onLogout()">Logout</button>
+      </li>
+    </ul>
+  </span>
+</mat-toolbar>

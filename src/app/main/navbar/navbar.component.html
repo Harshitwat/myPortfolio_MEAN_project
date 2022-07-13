@@ -1,0 +1,25 @@
+<a [routerLink]="user?.userID" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+          <aside id="colorlib-aside" role="complementary" class="border js-fullheight">
+            <div class="text-center">
+              <div class="author-img" style="background-image: url({{user.pImage}});"></div>
+              <h1 id="colorlib-logo"><a >{{user?.firstName}} {{user?.lastName}}</a></h1>
+              <span class="position"><a href="">{{user?.designation}}</a><br>in {{user?.location}}</span>
+            </div>
+            <nav id="colorlib-main-menu" role="navigation" class="navbar">
+              <div id="navbar" class="collapse">
+                <ul>
+                  <li class="active"><a  data-nav-section="home">Home</a></li>
+                  <li><a  data-nav-section="about">About</a></li>
+                  <li><a  data-nav-section="expertise">Expertise</a></li>
+                  <li><a  data-nav-section="skills">Skills</a></li>
+                  <li><a  data-nav-section="education">Education</a></li>
+                  <li><a  data-nav-section="experience">Experience</a></li>
+                  <li><a  data-nav-section="work">Projects</a></li>
+                  <li><a  data-nav-section="contact">Contact</a></li>
+                </ul>
+              </div>
+            </nav>
+
+
+
+      </aside>

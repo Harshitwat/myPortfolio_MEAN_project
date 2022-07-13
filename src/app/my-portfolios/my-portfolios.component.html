@@ -1,0 +1,27 @@
+<section class="colorlib-services" >
+  <div class="colorlib-narrow-content">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3" >
+        <span class="heading-meta">My Portfolios</span>
+        <h2 class="colorlib-heading">Here are some of my portfolios</h2>
+      </div>
+    </div>
+    <div class="row row-pt-md">
+      <div class="col-md-4 text-center " *ngFor="let u of users">
+        <div class="services color-2">
+          <span class="icon">
+            <a routerLink="/{{u.userID}}" target="_blank"><i class="icon-phone3"></i></a>
+          </span>
+          <div class="desc">
+            <h3>{{u?.firstName}} {{u?.lastName}}</h3>
+            <p>{{u?.about}}</p>
+            <button *ngIf="userIsAuthenticated && authId==u.creator" class="btn btn-primary" [routerLink]="['/edit',u.userID,'about',u.userID]">Edit</button>
+            <button *ngIf="userIsAuthenticated&& authId==u.creator " class="btn btn-warning" (click)="onDelete(u.userID)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+
+  </div>
+</section>

@@ -1,0 +1,63 @@
+<section class="colorlib-contact">
+  <div class="colorlib-narrow-content">
+
+    <div class="row" >
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3">
+        <span class="heading-meta">Edit your details</span>
+        <h2 class="colorlib-heading">Edit</h2>
+      </div>
+    </div>
+
+
+  <mat-toolbar class="position-fixed" >
+      <!-- <span class="mat-spacer"></span> -->
+
+      <span style="margin-right: 15%;">
+        <ul>
+          <li >
+            <a mat-button [routerLink]="['about',id]" routerLinkActive="mat-primary">About</a>
+          </li>
+          <li >
+            <a mat-button [routerLink]="['expertise',id]">Expertise</a>
+          </li>
+          <li >
+            <a mat-button [routerLink]="['skills',id]">Skills</a>
+          </li>
+          <li >
+            <a mat-button [routerLink]="['education',id]" >Education</a>
+          </li>
+          <li >
+            <a mat-button [routerLink]="['experience',id]" >Experience</a>
+          </li>
+          <li >
+            <a mat-button [routerLink]="['projects',id]">Projects</a>
+          </li>
+          <li >
+            <a mat-button [routerLink]="['contact',id]">Contact</a>
+          </li>
+        </ul>
+      </span>
+    </mat-toolbar>
+<router-outlet ></router-outlet>
+
+  <!-- <div class="col-md-10 col-md-push-1" style="margin-top: 150px;">
+    <div class="row">
+    <div class="col-md-10 col-md-offset-1 col-md-pull-1 " >
+      <form action="">
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email">
+        </div>
+
+        <div class="form-group" style="width: 50%;">
+          <input type="password" class="form-control" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary btn-send-message" value="Save">
+        </div>
+      </form>
+    </div>
+    </div>
+
+  </div> -->
+</div>
+  </section>

@@ -1,0 +1,22 @@
+<section class="colorlib-skills" data-section="skills">
+  <div class="colorlib-narrow-content">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+        <span class="heading-meta">My Specialty</span>
+        <h2 class="colorlib-heading animate-box">My Skills</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 " *ngFor="let s of skills" >
+        <div class="progress-wrap" >
+          <h3>{{s.name}}</h3>
+          <div class="progress">
+             <div class="progress-bar color-{{s.color}}" role="progressbar" style="width:{{s.percent}}%">
+              <span>{{s.percent}}%</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

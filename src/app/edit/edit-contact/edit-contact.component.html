@@ -1,0 +1,57 @@
+<section class="colorlib-contact">
+  <div class="colorlib-narrow-content">
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3">
+        <span class="heading-meta">Edit your Contact details</span>
+      </div>
+    </div>
+  </div>
+<div class="col-md-10 col-md-push-1" >
+  <div class="row">
+  <div class="col-md-10 col-md-offset-1 col-md-pull-1 " >
+    <form [formGroup]="form" (submit)="onSave()">
+      <div class="form-group" style="width: 25%;">
+        <mat-form-field>
+          <input
+          matInput
+          formControlName="email"
+          type="email"
+          placeholder="Email"
+          class="form-control">
+          <mat-error *ngIf="form.get('email').invalid">Please enter a valid email</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group" style="width: 25%;">
+        <mat-form-field>
+          <textarea
+          matInput
+          formControlName="address"
+          type="text"
+          placeholder="Address"
+          class="form-control"></textarea>
+          <mat-error *ngIf="form.get('address').invalid">Please enter a valid Address</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group" style="width: 25%;">
+        <mat-form-field>
+          <input
+          matInput
+          formControlName="phoneNumber"
+          placeholder="Mobile no."
+          type="number"
+          class="form-control">
+          <mat-error *ngIf="form.get('phoneNumber').invalid">Please enter a valid number</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <button type="submit"
+        mat-raised-button
+        color="primary">Save</button>
+      </div>
+    </form>
+  </div>
+  </div>
+
+</div>
+</section>

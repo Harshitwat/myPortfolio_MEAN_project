@@ -1,0 +1,70 @@
+<section class="colorlib-contact">
+  <div class="colorlib-narrow-content">
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-md-pull-3">
+        <span class="heading-meta">Edit your Expertise</span>
+      </div>
+    </div>
+  </div>
+<div class="col-md-10 col-md-push-1" >
+  <form [formGroup]="form" (submit)="onSave()">
+
+    <div class="form-group"  style="width: 25%;" formArrayName="expertise">
+
+      <label class="col-md-3">Add your Expertise:</label>
+      <ng-container *ngFor="let ps of form.get('expertise')['controls'],let i= index;" [formGroupName]="i">
+      <mat-form-field >
+        <input
+        matInput
+        formControlName="title"
+        type="text"
+        class="form-control mt-20"
+        placeholder="Add Expertise title">
+      </mat-form-field>
+      <mat-form-field >
+        <textarea
+        matInput
+        formControlName="desc"
+        type="text"
+        class="form-control mt-20"
+        placeholder="Add Expertise Desc"></textarea>
+      </mat-form-field>
+      <div>
+
+        <label for="color">Select color: </label>
+        <mat-radio-group id="color" formControlName="color" >
+          <mat-radio-button checked value="1" ><span class="dot" style="background-color: blue;"></span></mat-radio-button>
+          <mat-radio-button  value="2" ><span class="dot" style="background-color: red;"></span></mat-radio-button>
+          <mat-radio-button value="3" ><span class="dot" style="background-color: yellow;"></span></mat-radio-button>
+          <mat-radio-button value="4" ><span class="dot" style="background-color: purple;"></span></mat-radio-button>
+          <mat-radio-button value="5" ><span class="dot" style="background-color: cyan;"></span></mat-radio-button>
+          <mat-radio-button value="6" ><span class="dot" style="background-color: darkblue;"></span></mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div>
+
+        <label for="icon">Select icon: </label>
+        <mat-radio-group id="icon"  formControlName="icon">
+          <mat-radio-button checked value="icon-data"><span class="icon-data" ></span></mat-radio-button>
+          <mat-radio-button value="icon-bulb"><span class="icon-bulb"></span></mat-radio-button>
+          <mat-radio-button value="icon-phone3"><span class="icon-phone3"></span></mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <button class="btn btn-danger " (click)="onDelete(i)">Delete</button>
+
+    </ng-container>
+    <mat-error *ngIf="form.get('expertise').invalid">Please enter a valid Expertise</mat-error>
+    <button class="btn btn-light btn-sm" style="margin: 3px;" (click)="onAddExpertise()" type="button">+Add Expertise</button>
+
+
+  </div>
+  <div class="form-group">
+    <button type="submit"
+    mat-raised-button
+    color="primary">Save</button>
+  </div>
+</form>
+
+</div>
+</section>
